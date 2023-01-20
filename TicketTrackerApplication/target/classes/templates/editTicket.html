@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Ticket Tracker Application</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+	
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar navbar-dark bg-primary">
+		<a class="navbar-brand" href="#">Ticket Tracker Application</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="navbar-brand nav-link"
+					href="/ticketList">Tickets</a></li>
+				<li class="nav-item"><a class="navbar-brand nav-link"
+					href="/ticketList/new">New Tickets</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center">Edit Ticket</h1>
+				<div class="card-body">
+					<form th:action = "@{/ticketList/{id} (id=${ticket.id})}" th:object = "${ticket}" method="POST">
+						<div class="form-group">
+							<label> Title </label> <input type="text" name="ticketTitle"
+								th:field="*{ticketTitle}" class="form-control"
+								placeholder="Enter Title" />
+						</div>
+
+						<div class="form-group">
+							<label> Short Description </label> <input type="text"
+								name="ticketDescription" th:field="*{ticketDescription}"
+								class="form-control" placeholder="Enter Short Description" />
+						</div>
+
+						<div class="form-group">
+							<label>Content</label>
+							<textarea class="form-control" rows="4" id="ticketContent" placeholder="Enter Content"
+								th:field="*{ticketContent}" autocomplete="off"></textarea>
+						</div>
+						<div class="box-footer">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
